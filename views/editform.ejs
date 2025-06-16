@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit chats</title>
+    <style>
+          h2{
+            text-align: center;
+        }
+        textarea {
+    background-color: pink;
+    width: 50%;
+    height: 100px;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    color: purple;
+    margin-left:30px;
+}
+button{
+     text-align: center;
+            align-items: center;
+            height:50px;
+            width:100px;
+            border-radius:5rem;
+            background-color:aqua;
+            color:black;
+            display: block;
+            margin-top:200px;
+            margin-left:600px;
+            cursor: pointer;
+}
+    </style>
+</head>
+<body>
+    <h2>Edit your chat with ID: <%=chat._id %></h2>
+     <p>From: <%= chat.from %></p>
+    <form method="POST", action="/chats/<%= chat._id%>?_method=PUT">
+        <p><textarea name="msg" rows="5" cols="10"><%= chat.msg %></textarea></p>
+        <button>Update</button>
+    </form>
+     <p>To: <%= chat.to %></p>
+</body>
+</html>

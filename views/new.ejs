@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add chat</title>
+    <style>
+        h2{
+            text-align: center;
+        }
+        textarea {
+    background-color: pink;
+    width: 50%;
+    height: 100px;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    color: purple;
+    margin-left:30px;
+}
+input {
+    background-color: purple;
+    color: white;
+    width: 50%;
+    padding: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+ button{
+            text-align: center;
+            align-items: center;
+            height:50px;
+            width:100px;
+            border-radius:5rem;
+            background-color: aqua;
+            color:black;
+            display: block;
+            margin-top:150px;
+            margin-left:600px;
+            cursor: pointer;
+        }
+        .mi{
+            margin-top:30px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Write new Chat.</h2>
+    <form method="POST" action="/chats">
+       From: <input placeholder="who are you?" name="from"><br><br>
+      <p class="mi"> Message:</p> <textarea name="msg">Write your msg here.</textarea><br><br><br><br>
+        To:<input placeholder="add reciever" name="to"><br><br><br>
+        <button Onclick="return confirmAdd();" type="submit", name="actionadd" value="1" >Create chat</button>
+    </form>
+    <script>
+        function confirmAdd(){
+            return confirm("Are you sure you want to Add?");
+        }
+    </script>
+</body>
+</html>

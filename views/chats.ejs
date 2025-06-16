@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chats</title>
+
+    <style>
+        body{
+            margin-left:10px;
+        }
+        h1{
+            text-align:center;
+        }
+        .chatt{
+            background-color: aquamarine;
+            color:blue;
+            padding:20px;
+            border-radius: 16px;
+            display: inline-block;
+        }
+        .msg{
+            background-color: dodgerblue;
+            color:white;
+            padding:5px,15px;
+            border-radius: 5px;
+        }
+        .btn{
+            text-align: center;
+            align-items: center;
+            height:50px;
+            width:100px;
+            border-radius:5rem;
+            background-color:aqua;
+            color:black;
+            display: block;
+            margin-top:200px;
+            margin-left:600px;
+            cursor: pointer;
+        }
+        .btn2{
+            height:50px;
+            width:100px;
+            border-radius:5rem;
+            background-color: #6a6e5e;
+            color:black;
+            cursor: pointer;
+        }
+        .btn5{
+            text-align: center;
+            align-items: center;
+            height:50px;
+            width:100px;
+            border-radius:5rem;
+            background-color:aqua;
+            color:black;
+            display: block;
+            margin-top:100px;
+            margin-left:400px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Here All chats are fetched from the database.</h1>
+    <form method="GET", action="/chats/new">
+    <button class="btn">Add New Chat</button>
+    </form><br><br>
+    <% for(let chat of chats){ %>
+        <div class="chatt">
+            <p>From: <i><%= chat.from %></i></p>
+            <div class="msg">
+            <p>Message:  <%= chat.msg %></p>
+            <form method="GET", action="/chats/<%=chat._id%>/edit">
+                <button class="btn2">Edit chat</button>
+            </form>
+            </div>
+            <p>To: <i><%= chat.to %></i></p>
+                <hr>
+                <p>Time:<%= chat.created_at.toString().split(" ")[4] %></p>
+                <p>Date:<%= chat.created_at.toString().split(" ").slice(1,4).join("-") %></p>
+                <p>Day: &nbsp <%= chat.created_at.toString().split(" ")[0] %></p>
+                <form method="POST" action="/chats/<%= chat._id%>/?_method=DELETE">
+                    <button class="btn5" Onclick="return confirmDelete();" type="submit", name="actiondelete" value="1">Delete</button>
+                </form>
+        </div>
+        <br><br>
+    <% } %>
+     <script>
+        function confirmDelete(){
+            return confirm("Are you sure you want to Delete?");
+        }
+    </script>
+</body>
+</html>
